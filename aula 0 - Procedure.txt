@@ -1,0 +1,37 @@
+Criação da tabela clientes
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    cidade VARCHAR(100)
+);
+
+-- Inserção de dados na tabela clientes
+INSERT INTO clientes (nome, cidade) VALUES
+('Manuel', 'Rio de Janeiro'),
+('Odete', 'São Paulo'),
+('Pedro', 'Guarulhos'),
+('Maria', 'São Paulo');
+
+-- Criando novamente os mesmos dados (aparentemente repetidos na sua execução)
+INSERT INTO clientes (nome, cidade) VALUES
+('Manuel', 'Rio de Janeiro'),
+('Odete', 'São Paulo'),
+('Pedro', 'Guarulhos'),
+('Maria', 'Rio de Janeiro'),
+('Manuel', 'Rio de Janeiro'),
+('Odete', 'São Paulo'),
+('Pedro', 'Guarulhos'),
+('Maria', 'Rio de Janeiro');
+
+-- Criação da procedure para listar os clientes
+DELIMITER //
+
+CREATE PROCEDURE PROC_LISTAR_CLIENTES ()
+BEGIN
+    SELECT * FROM clientes;
+END //
+
+DELIMITER ;
+
+-- Chamada da procedure
+CALL PROC_LISTAR_CLIENTES();
